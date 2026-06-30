@@ -5,7 +5,15 @@
 		},
 		{
 			"path": "backend"
+		},
+		{
+			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.exclude": {
+			"backend": true,
+			"frontend": true,
+		},
+	}
 }
