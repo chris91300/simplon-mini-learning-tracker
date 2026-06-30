@@ -1,0 +1,42 @@
+créer nos entités
+
+Resources:
+    id
+    title
+    description
+    url
+    type (ENUM : ARTICLE, VIDEO, DOCUMENTATION, COURSE, OTHER)
+    status (ENUM : TODO, IN_PROGRESS, DONE)
+    createdAt
+    category (voir la relation many to one ou many to many)
+
+
+category :
+    id
+    name
+    description
+
+
+*******************************************************
+
+Créer nos repository
+    ResourcesRepository
+    CategoryRepository
+
+*******************************************************
+
+Créer nos services
+    ResourcesService
+    CategoryService
+
+*******************************************************
+
+Créer nos Controller
+    ResourcesController (api/resources)
+        GET     /
+        GET     /{resourceId}
+        POST    /
+
+    CategoryController (api/categories)
+        GET     /
+        POST    /
