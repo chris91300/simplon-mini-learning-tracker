@@ -1,6 +1,6 @@
 package com.simplon.miniLearningTracker.models;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import com.simplon.miniLearningTracker.models.enums.ResourcesStatus;
@@ -20,7 +20,7 @@ import jakarta.persistence.Table;
 @Table(name = "resource")
 public class Resource {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @GeneratedValue(strategy = GenerationType.UUID) 
     private UUID id;
 
     @Column(length = 255, nullable = false)
@@ -40,10 +40,76 @@ public class Resource {
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)    
-    private Date createdAt;
+    private Instant createdAt;
 
     @ManyToOne
     private Category category;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public ResourcesType getType() {
+        return type;
+    }
+
+    public void setType(ResourcesType type) {
+        this.type = type;
+    }
+
+    public ResourcesStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ResourcesStatus status) {
+        this.status = status;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    
     
 }
 
