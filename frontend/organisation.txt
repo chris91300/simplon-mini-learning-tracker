@@ -1,0 +1,70 @@
+Il va falloir créer 5 pages
+
+/ 					-> liste de toutes les ressources
+/resources/:id      -> détail d'une ressource
+/resources/new      -> formulaire de création d'une ressource
+/categories         -> liste de toutes les catégorie
+/categories/new     -> formulaire de création d'une nouvelle catégorie
+
+
+### la page d'accueil ("/")
+- Il faut créer un composant <Resources /> qui doit demander à l'api toutes les ressources à l'api
+- Ce composant aura un premier état (status): en attente de récupérer les ressources (etat: 'en attente' ou 'pending' en anglais)
+- Une fois les ressources récupérer (etat: 'fait' ou 'done' en anglais) il faut les afficher.
+- On va donc récupérer un tableau de resources
+- Il nous un composant <ResourceSummary /> qui sera charger d'afficher les donnnées
+
+Donc pour chaque resource du tableau, on affiche le <ResourceSummary /> (qui devra avoir une props)
+
+
+### détail d'une ressource ("/resources/:id")
+C'est le même principe qu'au dessus.
+- Il faut créer un composant <Resources /> qui doit demander à l'api le ressource ayant l'id présent dans l'url
+- Ce composant aura un premier état (status): en attente de récupérer les ressources (etat: 'en attente' ou 'pending' en anglais)
+- Une fois les ressources récupérer (etat: 'fait' ou 'done' en anglais) il faut les afficher.
+- On va donc récupérer la resource correspondante et on affiche ses données
+
+
+### formulaire de création d'une ressource ("/resources/new")
+Pour cette page, si on veut bien faire les chose, c'est plus compliqué qu'il n'y paraît
+- Il faut créer un composant <ResourceForm />
+- il demandera: 
+        un titre (title)
+        une description (description)
+        une url (url)
+        un type (type : ARTICLE VIDEO DOCUMENTATION COURSE OTHER) on doit donc proposer les types possibles
+        un status (status: TODO IN_PROGRESS DONE) on doit donc proposer les status possibles
+        une catégorie (category)
+
+c'est pour la categorie que ça se complique. Le soucis c'est que l'on doit indiquer une catégorie qui existe dans la base de données.
+Il nous faut donc récupérer les categories via l'api. Cela nous permettra de proposer à l'utilisateur
+via un 'select' de choisir une catégorie. Il faut donc aussi gérer le fait qu'il peux n'y avoir aucune
+catégorie dans la base de données
+
+Ensuite, on envoie le formulaire à l'api pour ajouter cette nouvelle ressource.
+Il faut donc avoir comme au dessus, un status 'pending' qui affiche un petit <loading /> puis une fois la réponse
+de la api reçu, on informe l'utilisateur que la ressource a été créée ou pas (si erreur)
+
+
+
+### liste de toutes les catégorie ("/categories")
+- Il faut créer un composant <Categories /> qui doit demander à l'api toutes les categories à l'api
+- Ce composant aura un premier état (status): en attente de récupérer les catégories (etat: 'en attente' ou 'pending' en anglais)
+- Une fois les catégories récupérer (etat: 'fait' ou 'done' en anglais) il faut les afficher.
+- On va donc récupérer un tableau de catégory
+- Il nous un composant <CategorySummary /> qui sera charger d'afficher les donnnées
+
+Donc pour chaque category du tableau, on affiche le <CategorySummary /> (qui devra avoir une props)
+
+
+
+### formulaire de création d'une nouvelle catégorie ("/categories/new")
+Il nous faut un formulaire <CategoryForm />
+il demandera à l'utilisateur:
+        un nom (name)
+        une description (description)
+
+Ensuite, on envoie le formulaire à l'api pour ajouter cette nouvelle catégorie.
+Il faut donc avoir comme au dessus, un status 'pending' qui affiche un petit <loading /> puis une fois la réponse
+de la api reçu, on informe l'utilisateur que la catégorie a été créée ou pas (si erreur)
+
