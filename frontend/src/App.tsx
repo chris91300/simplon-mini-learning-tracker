@@ -13,9 +13,7 @@ function App() {
 
 
   return (
-    <>
-      <h1>MINI LEARNING TRACKER</h1>
-    </>
+    <p>composant App</p>
   )
 }
 
